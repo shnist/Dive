@@ -1,0 +1,252 @@
+/*
+ * 1.0 Common Styles
+ */
+
+body {
+    margin: 0;
+    font-family: arial, helvetica, sans-serif;
+	padding: 0;
+	color: #000;
+}
+h1{
+	margin: 0;
+	padding: 0;
+	font-size: 50px;
+}
+p{
+	margin: 0;
+	padding: 0;
+}
+#page{
+	padding: 15px;
+	width: 1000px;
+	margin: 0 auto;
+}
+
+
+/*
+ * 2.0 Header 
+ */
+
+#strapLine{
+    font-size: 12px;
+}
+#header{
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 50px 0 0;
+}
+
+/*
+ * 3.0 Search Container
+ */
+
+#searchContainer{
+	display: inline-block;
+	vertical-align: top;
+}
+#tagField{
+    color: #575757;
+	padding: 20px;
+	border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+	font-size: 30px;
+}
+#submitButton{
+    width: 80px;
+    height: 80px;
+    border: none;
+    cursor: pointer;
+	vertical-align: top;
+    text-indent: -1000em;
+}
+
+/*
+ * 4.0 Image Container
+ */
+
+#contrastBox{
+    display: inline-block;
+    width: 700px;
+    height: 447px;
+}
+
+/*
+ * 5.0 Content Box
+ *
+ * Styles relating to the module that deals with
+ * the detailed image viewer
+ * 
+ */
+
+#contentBox{
+    display: inline-block;
+    width: 260px;
+	border-radius: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+	vertical-align: top;
+}
+#largerImage{
+	padding: 10px 10px 0 10px;
+    margin: 0 auto;
+}
+#largerImage:hover{
+	cursor: pointer;
+}
+#title, p#dateTaken, p#authorName{
+    font-size: 14px;
+	padding: 5px 0 5px 0;
+	border-bottom: 1px dotted #CCC;
+}
+#tagCloud{
+	margin: 10px 0 0 0;
+}
+.cloudTag{
+    font-size: 14px;  
+}
+
+
+/*
+ * 5.0 Footer
+ */
+
+#footer{
+    font-size: 10px;
+	text-align: center;
+}
+
+
+
+#loadingImage{
+    background: url(images/loader.gif) no-repeat;
+    position: relative;
+    height: 66px;
+    width: 66px;
+    top: 240px;
+    left: 330px;
+    z-index: 300;
+}
+#errorMessage{
+    position: absolute;
+    top: 5px;
+    left: 730px;
+    z-index: 1000;
+    font-size: 10pt;
+    color: #fff;
+}
+#diveLogo{
+/*    display: block;
+    position: absolute;
+    left: 120px;
+    top: 0;    */
+}
+
+#calculationContainer {
+    width: 1360px;
+    height: 850px;
+    left: -200px;
+    top: -230px;
+    position: relative;
+}
+#viewport {
+    left: 10px;
+    top: 10px; 
+    height: 425px;
+    width: 680px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+#viewportOverlay{
+    left: 0;
+    top: 0;
+    height: 440px;
+    width: 690px;
+    position: absolute;
+    background: #000;
+    z-index: 100;
+    opacity: 0;
+    filter: alpha(opacity = 0); /* -- ie fix -- */
+}
+
+img[rel=grid]{
+    z-index: 1;
+    float: left;
+    margin: 5px;
+    height: 75px;
+    width: 75px;
+}
+img[rel=grid]:hover{
+    opacity: 0.5;
+    filter: alpha(opacity = 0); /* -- ie fix -- */
+}
+img[rel=grid].loading{
+    opacity: 0.5;
+    filter: alpha(opacity = 0); /* -- ie fix -- */
+}
+
+#overlay {   
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    opacity: 0;
+    filter: alpha(opacity = 0); /* -- ie fix -- */
+    z-index: 20;
+    display: none;
+    visibility: hidden;
+}
+.cursorClick{
+   /* cursor: move !important;  */
+}
+
+#searchBarLabel{
+    display: none;    
+}
+
+
+
+#contentBoxInstructions{
+/*    font-size: 10pt;
+    position: relative;
+    top: 0;
+    left: 0;
+    padding: 0 0 0 10px;
+    width: 240px;
+    z-index: 1000;*/
+}
+
+
+
+#lightBoxOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index:9999;
+	opacity: 0.8;
+}
+#whiteWindow {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    margin: -200px 0 0 -300px; 
+    z-index: 10000;
+}
+#whiteWindow #close {
+    color: #fff;
+    position: relative;
+    right: 10px;
+    top: 10px;
+    font-size: 14px;
+    z-index: 5;
+}
+#lightboxImage{
+	display: block;
+	margin: 0 auto;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+} 
