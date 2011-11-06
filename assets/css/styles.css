@@ -53,13 +53,14 @@ p{
     -webkit-border-radius: 5px;
 	font-size: 30px;
 }
-#submitButton{
+#submit-button{
     width: 80px;
     height: 80px;
     border: none;
     cursor: pointer;
 	vertical-align: top;
     text-indent: -1000em;
+	background: url(/assets/images/search_icon.png) no-repeat;	
 }
 
 /*
@@ -120,7 +121,7 @@ p{
 
 
 #loadingImage{
-    background: url(images/loader.gif) no-repeat;
+    background: url(/assets/images/loader.gif) no-repeat;
     position: relative;
     height: 66px;
     width: 66px;
