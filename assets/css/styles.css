@@ -4,9 +4,10 @@
 
 body {
     margin: 0;
-    font-family: arial, helvetica, sans-serif;
+    font-family: 'Puritan', helvetica, arial, serif;
 	padding: 0;
 	color: #000;
+	background: #EEE;
 }
 h1{
 	margin: 0;
@@ -18,9 +19,19 @@ p{
 	padding: 0;
 }
 #page{
-	padding: 35px 15px 15px 15px;
 	width: 1000px;
-	margin: 0 auto;
+	margin: 15px auto;
+	
+}
+#content{
+	background: #FFF;	
+	-moz-box-shadow: 0 0 5px 3px #DDD;
+	-webkit-box-shadow: 0 0 5px 3px #DDD;
+	box-shadow: 0 0 5px 3px #DDD;
+	-msie-box-shadow: 0 0 5px 3px #DDD;
+	-o-box-shadow: 0 0 5px 3px #DDD;
+	padding: 30px 15px 15px 15px;
+	border-radius: 3px;
 }
 
 
