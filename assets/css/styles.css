@@ -11,14 +11,14 @@ body {
 h1{
 	margin: 0;
 	padding: 0;
-	font-size: 50px;
+	font-size: 55px;
 }
 p{
 	margin: 0;
 	padding: 0;
 }
 #page{
-	padding: 15px;
+	padding: 35px 15px 15px 15px;
 	width: 1000px;
 	margin: 0 auto;
 }
@@ -28,24 +28,25 @@ p{
  * 2.0 Header 
  */
 
-#strapLine{
-    font-size: 12px;
+#strap-line{
+    font-size: 16px;
 }
 #header{
 	display: inline-block;
 	vertical-align: top;
-	margin: 0 50px 0 0;
+	margin: 0 35px 0 0;
 }
 
 /*
  * 3.0 Search Container
  */
 
-#searchContainer{
+#search-container{
 	display: inline-block;
 	vertical-align: top;
+	margin: 0 0 20px 0;
 }
-#tagField{
+#tag-field{
     color: #575757;
 	padding: 20px;
 	border-radius: 5px;
@@ -60,7 +61,8 @@ p{
     cursor: pointer;
 	vertical-align: top;
     text-indent: -1000em;
-	background: url(/assets/images/search_icon.png) no-repeat;	
+	background: url(/assets/images/search_icon.png) no-repeat;
+	margin: 0 0 0 10px;
 }
 
 /*
@@ -81,13 +83,14 @@ p{
  * 
  */
 
-#contentBox{
+#content-box{
     display: inline-block;
     width: 260px;
 	border-radius: 20px;
     -moz-border-radius: 20px;
     -webkit-border-radius: 20px;
 	vertical-align: top;
+	padding: 5px 0 0 0;
 }
 #largerImage{
 	padding: 10px 10px 0 10px;
@@ -114,10 +117,10 @@ p{
  */
 
 #footer{
-    font-size: 10px;
+    font-size: 14px;
+	margin: 15px 0 0 0;
 	text-align: center;
 }
-
 
 
 #loadingImage{
@@ -205,20 +208,6 @@ img[rel=grid].loading{
 #searchBarLabel{
     display: none;    
 }
-
-
-
-#contentBoxInstructions{
-/*    font-size: 10pt;
-    position: relative;
-    top: 0;
-    left: 0;
-    padding: 0 0 0 10px;
-    width: 240px;
-    z-index: 1000;*/
-}
-
-
 
 #lightBoxOverlay {
     position: absolute;

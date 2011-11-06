@@ -287,9 +287,9 @@ dive = {
 		},
 		imageSelection : function () {
 			$('img[rel^="grid"]').dblclick(function(){
-				if ($('#contentBoxInstructions').length){
-					$('#contentBox p').remove();
-					$('#contentBox').append('<img src="images/largerImageHolder.gif" alt="larger image" id="largerImage"><p id="title">Title:</p>'
+				if ($('#content-box-instructions').length){
+					$('#content-box p').remove();
+					$('#content-box').append('<img src="images/largerImageHolder.gif" alt="larger image" id="largerImage"><p id="title">Title:</p>'
 									+ '<p id="dateTaken">Taken:</p><p id="authorName">Author\'s Name:</p><div id="tagCloud"></div>');
 					$('#largerImage').bind('click', dive.ui.dialog.init);
 				}
