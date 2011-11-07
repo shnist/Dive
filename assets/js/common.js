@@ -1,7 +1,7 @@
 var dive = window.dive || {};
 	
 dive = {
-	placeholderCopy : 'search Flickr...',
+	placeholderCopy : 'explore Flickr',
 	errorMessage : 'Sorry, but no search results were returned. Please try something else!',
 	imageList : [],
 	init : function () {
