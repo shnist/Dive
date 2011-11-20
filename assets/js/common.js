@@ -36,7 +36,7 @@ dive = {
 				imageMarkUp = imageMarkUp + '<img src="images/placeHolder.gif" alt="grid image" rel="grid">';
 			}
 			
-			$('#calculationContainer').append(imageMarkUp);		
+			$('#calculation-container').append(imageMarkUp);		
 		},
 		photoInfo : function (e) {
 			$('#title, #dateTaken, #authorName, #tagCloud').empty();
@@ -84,13 +84,14 @@ dive = {
 	},
 	ajax : {
 		init : function (){
-			$('#image-search').submit(function(){
+			$('#image-search').submit(function(e){
+				e.preventDefault();
 				// if the tag field value has not been defined
-				if ($('#tagField').val() !== dive.placeholderCopy){
+				if ($('#tag-field').val() !== dive.placeholderCopy){
 					// if there is a space in the search string, replace it with ; - makes it compatible with flickr API
-					$('#tagField').val().replace(/[:space:]/g, ';' );					
+					$('#tag-field').val().replace(/[:space:]/g, ';' );					
 					// performs the getImages function with the value of search box
-					dive.ajax.getImages($('#tagField').val());
+					dive.ajax.getImages($('#tag-field').val());
 				}
 				return false;
 			});			
@@ -142,8 +143,11 @@ dive = {
 	},
 	flickr : {
 		generateUrls : function (e) {
+			// empty the array
+			dive.imageList.length = 0;
+			console.log(dive.imageList)
 			// cycles through each image
-			for(var i = 0; i < $('#calculationContainer img').length; i++) {
+			for(var i = 0; i < $('#calculation-container img').length; i++) {
 				// variable that creates an array, which contains all the details of the photos
 				var photoDetails = e.photos.photo[ i ];
 				
@@ -171,13 +175,13 @@ dive = {
 	pageTransform : {
 		loadStart : function () {
 			// append the loading image to the body
-			$('body').append('<div id="loadingImage"></div>');
+			$('#contrast-box').append('<div id="loading-image"></div>');
 			// reduces the opacity of the images to indicate they are 'inactive'
 			$('img[rel^="grid"]').addClass('loading');			
 		},
 		loadComplete : function () {
 			// removes the loading image
-			$('#loadingImage').remove();
+			$('#loading-image').remove();
 			// removes the opacity
 			$('img[rel^="grid"]').removeClass('loading');				
 		},
@@ -204,9 +208,9 @@ dive = {
 		drag : function () {			
 			$('#viewport').bind('mousedown', function (e) {
 				// variable for the x coordinates of the mouse
-				dive.ui.mouseX = e.pageX + $('#calculationContainer').offset().left,
+				dive.ui.mouseX = e.pageX + $('#calculation-container').offset().left,
 				// variable for the y coordinates of the mouse
-				dive.ui.mouseY = e.pageY + $('#calculationContainer').offset().top;				
+				dive.ui.mouseY = e.pageY + $('#calculation-container').offset().top;				
 			
 				// on each image perform a function 'capture', using parameter i to store the argument
 				$('img[rel^="grid"]').each(function(i){
@@ -255,19 +259,19 @@ dive = {
 						// if the images move too far to the left
 						if (movingLeft < 0) {
 							$(this).attr('src', dive.imageList[ Math.floor ( Math.random() * dive.imageList.length )]) ;							
-							dive.ui.imageCoordinates[i].leftOffset += $('#calculationContainer').width();
-						} else if (movingLeft > $('#calculationContainer').width()) {
+							dive.ui.imageCoordinates[i].leftOffset += $('#calculation-container').width();
+						} else if (movingLeft > $('#calculation-container').width()) {
 							$(this).attr('src', dive.imageList[ Math.floor ( Math.random() * dive.imageList.length )]) ;
-							dive.ui.imageCoordinates[i].leftOffset += - $('#calculationContainer').width();
+							dive.ui.imageCoordinates[i].leftOffset += - $('#calculation-container').width();
 						}
 				
 						// if the images have moved too far to the top
 						if (movingTop < 0) {
 							$(this).attr('src', dive.imageList[ Math.floor ( Math.random() * dive.imageList.length )]) ;
-							dive.ui.imageCoordinates[i].topOffset += $('#calculationContainer').height();
-						} else if (movingTop > $('#calculationContainer').height()) {
+							dive.ui.imageCoordinates[i].topOffset += $('#calculation-container').height();
+						} else if (movingTop > $('#calculation-container').height()) {
 							$(this).attr('src', dive.imageList[ Math.floor ( Math.random() * dive.imageList.length )]) ;
-							dive.ui.imageCoordinates[i].topOffset += - $('#calculationContainer').height();
+							dive.ui.imageCoordinates[i].topOffset += - $('#calculation-container').height();
 						}		
 						
 						// sets the css position
@@ -312,14 +316,14 @@ dive = {
 				// appending the lightBoxOverlay and whiteWindow and target
 				$('body').append('<div id="lightBoxOverlay"></div><div id="whiteWindow">'
 								+ '<img id="lightboxImage" src="images/targetImage.gif" alt="lightbox loading image">'
-								+ '<a href="#close" id="close">&times; Close</a><div id="loadingImage"></div></div>').fadeIn('normal');
+								+ '<a href="#close" id="close">&times; Close</a><div id="loading-image"></div></div>').fadeIn('normal');
 
 				// variable that stores that changes the size of the image
 				var largerImageSourceChange = $(this).attr('src').replace(/_m.jpg/, '.jpg');
 				// changes the src in the lightbox loading image 
 				$('#lightboxImage').attr('src', largerImageSourceChange);
 				// the loading image is removed
-				$('#loadingImage').remove();
+				$('#loading-image').remove();
 				// event handlers for the dialog
 				dive.ui.dialog.eventHandlers();
 			},

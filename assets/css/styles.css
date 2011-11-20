@@ -81,10 +81,11 @@ p{
  * 4.0 Image Container
  */
 
-#contrastBox{
+#contrast-box{
     display: inline-block;
     width: 700px;
     height: 447px;
+	position: relative;
 }
 
 /*
@@ -159,7 +160,7 @@ p{
     top: 0;    */
 }
 
-#calculationContainer {
+#calculation-container {
     width: 1360px;
     height: 850px;
     left: -200px;
@@ -258,4 +259,13 @@ img[rel=grid].loading{
 	margin: 0 auto;
 	-moz-border-radius: 20px;
 	-webkit-border-radius: 20px;
-} 
+}
+
+#loading-image{
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: url(/assets/images/loader.gif) no-repeat;
+	width: 66px;
+	height: 66px;
+}
