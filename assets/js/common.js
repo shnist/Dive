@@ -33,7 +33,7 @@ dive = {
 	
 			// populate the container
 			for (var i = 0; i < imageTotal; i++){
-				imageMarkUp = imageMarkUp + '<img src="images/placeHolder.gif" alt="grid image" rel="grid">';
+				imageMarkUp = imageMarkUp + '<img src="assets/images/place_holder.gif" alt="grid image" rel="grid">';
 			}
 			
 			$('#calculation-container').append(imageMarkUp);		
