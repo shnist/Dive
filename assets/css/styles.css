@@ -105,11 +105,11 @@ p{
 	vertical-align: top;
 	padding: 5px 0 0 0;
 }
-#largerImage{
+#larger-image{
 	padding: 10px 10px 0 10px;
     margin: 0 auto;
 }
-#largerImage:hover{
+#larger-image:hover{
 	cursor: pointer;
 }
 #title, p#dateTaken, p#authorName{
@@ -117,7 +117,7 @@ p{
 	padding: 5px 0 5px 0;
 	border-bottom: 1px dotted #CCC;
 }
-#tagCloud{
+#tag-cloud{
 	margin: 10px 0 0 0;
 }
 .cloudTag{
@@ -261,11 +261,16 @@ img[rel=grid].loading{
 	-webkit-border-radius: 20px;
 }
 
-#loading-image{
-	position: absolute;
-	top: 170px;
-	left: 290px;	
+.loading-image{
 	background: url(/assets/images/loader.gif) no-repeat;
 	width: 66px;
-	height: 66px;
+	height: 66px;	
+}
+#contrast-box .loading-image{
+	position: absolute;
+	top: 195px;
+	left: 315px;	
+}
+#content-box .loading-image{
+	margin: 15px 0 0 110px;
 }

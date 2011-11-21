@@ -39,7 +39,7 @@ dive = {
 			$('#calculation-container').append(imageMarkUp);		
 		},
 		photoInfo : function (e) {
-			$('#title, #dateTaken, #authorName, #tagCloud').empty();
+			$('#title, #dateTaken, #authorName, #tag-cloud').empty();
 
 			// variable that gets the link for each image
 			var imageTitle = e.photo.title._content,
@@ -58,7 +58,7 @@ dive = {
 					// variable that creates the tag array
 					var tagArray = e.photo.tags.tag[i]._content;
 					// appends the correct number of anchor elements to the array and populates them with the tags
-					$('#tagCloud').append('<a class="cloudTag" href="#">' + tagArray + '</a> ');
+					$('#tag-cloud').append('<a class="cloudTag" href="#">' + tagArray + '</a> ');
 				}
 			} else {
 				// for loop that appends the related tags to the tag cloud
@@ -66,7 +66,7 @@ dive = {
 					// variable that creates the tag array
 					var tagArray = e.photo.tags.tag[i]._content;
 					// appends the correct number of anchor elements to the array and populates them with the tags
-					$('#tagCloud').append('<a class="cloudTag" href="#">' + tagArray + '</a> ');
+					$('#tag-cloud').append('<a class="cloudTag" href="#">' + tagArray + '</a> ');
 				}
 			}
 			
@@ -135,6 +135,7 @@ dive = {
 				},
 				success: function jsonFlickrApi(data) {			
 					if (data.stat === 'ok') {
+						$('.loading-image').remove();
 						dive.pageBuilding.photoInfo(data);
 					}
 				}
@@ -145,7 +146,6 @@ dive = {
 		generateUrls : function (e) {
 			// empty the array
 			dive.imageList.length = 0;
-			console.log(dive.imageList)
 			// cycles through each image
 			for(var i = 0; i < $('#calculation-container img').length; i++) {
 				// variable that creates an array, which contains all the details of the photos
@@ -175,13 +175,13 @@ dive = {
 	pageTransform : {
 		loadStart : function () {
 			// append the loading image to the body
-			$('#contrast-box').append('<div id="loading-image"></div>');
+			$('#contrast-box').append('<div class="loading-image"></div>');
 			// reduces the opacity of the images to indicate they are 'inactive'
 			$('img[rel^="grid"]').addClass('loading');			
 		},
 		loadComplete : function () {
 			// removes the loading image
-			$('#loading-image').remove();
+			$('.loading-image').remove();
 			// removes the opacity
 			$('img[rel^="grid"]').removeClass('loading');				
 		},
@@ -293,21 +293,29 @@ dive = {
 			$('img[rel^="grid"]').dblclick(function(){
 				if ($('#content-box-instructions').length){
 					$('#content-box p').remove();
-					$('#content-box').append('<img src="images/largerImageHolder.gif" alt="larger image" id="largerImage"><p id="title">Title:</p>'
-									+ '<p id="dateTaken">Taken:</p><p id="authorName">Author\'s Name:</p><div id="tagCloud"></div>');
-					$('#largerImage').bind('click', dive.ui.dialog.init);
+					$('#content-box').append('<img src="/assets/images/larger_image_holder.gif" alt="larger image placeholder" id="larger-image"><p id="title">Title:</p>'
+									+ '<p id="dateTaken">Taken:</p><p id="authorName">Author\'s Name:</p><div id="tag-cloud"></div>');
+					$('#larger-image').bind('click', dive.ui.dialog.init);
 				}
 				// variable that stores that changes the size of the image
 				var changedSource = $(this).attr('src').replace(/_s.jpg/, '_m.jpg'),
 				// extracts the beginning of the url up to the beginning of the user id
 					extractionStart = $(this).attr('src').replace(/^http:\/\/farm[0-9]\.static\.flickr\.com\/[0-9]{4}\//i, ''),
 				// extracts the end of the url up to the end of the user id, leaving only the id
-					idExtract = extractionStart.replace(/_[A-Za-z\d]{10}_s\.jpg$/i, '');				
-				// the image container attribute is changed the thumbnail that has been clicked (modified to be larger)
-				$('#largerImage').attr('src', changedSource);
-	
+					idExtract = extractionStart.replace(/_[A-Za-z\d]{10}_s\.jpg$/i, ''),				
+				// load the image in and put in the loader for now - when onLoad is triggered (when the image has finished loading)
+				// change the source of the image and remove the loader
+					image = new Image();
+					
+				$('#content-box').append('<div class="loading-image"></div>');
+				image.src = changedSource;
+				image.onLoad = dive.ui.displayImage(image.src);
+					
 				dive.ajax.extractPhotoInformation(idExtract);
 			});
+		},
+		displayImage : function (source){
+			$('#larger-image').attr('src', source);
 		},
 		dialog : {
 			init : function (e){
@@ -316,14 +324,14 @@ dive = {
 				// appending the lightBoxOverlay and whiteWindow and target
 				$('body').append('<div id="lightBoxOverlay"></div><div id="whiteWindow">'
 								+ '<img id="lightboxImage" src="images/targetImage.gif" alt="lightbox loading image">'
-								+ '<a href="#close" id="close">&times; Close</a><div id="loading-image"></div></div>').fadeIn('normal');
+								+ '<a href="#close" id="close">&times; Close</a><div class="loading-image"></div></div>').fadeIn('normal');
 
 				// variable that stores that changes the size of the image
 				var largerImageSourceChange = $(this).attr('src').replace(/_m.jpg/, '.jpg');
 				// changes the src in the lightbox loading image 
 				$('#lightboxImage').attr('src', largerImageSourceChange);
 				// the loading image is removed
-				$('#loading-image').remove();
+				$('.loading-image').remove();
 				// event handlers for the dialog
 				dive.ui.dialog.eventHandlers();
 			},
