@@ -205,8 +205,10 @@ dive = {
 			dive.ui.drag();
 			dive.ui.imageSelection();
 		},
-		drag : function () {			
+		drag : function () {
+			$('body').bind('dragstart', function(event) { event.preventDefault() });
 			$('#viewport').bind('mousedown', function (e) {
+				e.preventDefault();
 				// variable for the x coordinates of the mouse
 				dive.ui.mouseX = e.pageX + $('#calculation-container').offset().left,
 				// variable for the y coordinates of the mouse
@@ -227,12 +229,13 @@ dive = {
 					dive.ui.imageCoordinates[i].leftOffset = 0;
 				});
 			
-				$(document).bind('mousemove', function(j){
+				$('body').bind('mousemove', function(j){
+					j.preventDefault();
 					// changing the cursor style when the mouse is down
-					$('document').addClass('cursorClick');
+					$('body').addClass('cursorClick');
 					
 					// stops the images from highlighting while dragging 
-					$('body').focus();
+					//$(this).focus();
 					
 					// variables
 					// variable for moving x coordinates of the mouse
@@ -285,8 +288,8 @@ dive = {
 			});
 			
 			$(document).mouseup(function(){
-				$(document).unbind('mousemove'); // unbinds the mousemove functions 
-				$(document).removeClass('cursorClick'); // removes the change of cursor
+				$('body').unbind('mousemove'); // unbinds the mousemove functions 
+				$('body').removeClass('cursorClick'); // removes the change of cursor
 			}); 	
 		},
 		imageSelection : function () {
