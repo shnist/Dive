@@ -296,7 +296,7 @@ dive = {
 			$('img[rel^="grid"]').dblclick(function(){
 				if ($('#content-box-instructions').length){
 					$('#content-box p').remove();
-					$('#content-box').append('<img src="/assets/images/larger_image_holder.gif" alt="larger image placeholder" id="larger-image"><p id="title">Title:</p>'
+					$('#content-box').append('<img src="assets/images/larger_image_holder.gif" alt="larger image placeholder" id="larger-image"><p id="title">Title:</p>'
 									+ '<p id="dateTaken">Taken:</p><p id="authorName">Author\'s Name:</p><div id="tag-cloud"></div>');
 					$('#larger-image').bind('click', dive.ui.dialog.init);
 				}
@@ -325,14 +325,15 @@ dive = {
 				e.preventDefault();
 
 				// appending the lightBoxOverlay and whiteWindow and target
-				$('body').append('<div id="lightBoxOverlay"></div><div id="whiteWindow">'
-								+ '<img id="lightboxImage" src="images/targetImage.gif" alt="lightbox loading image">'
-								+ '<a href="#close" id="close">&times; Close</a><div class="loading-image"></div></div>').fadeIn('normal');
+				$('body').append('<div id="dialog-overlay"></div><div id="dialog-container">'
+								+ '<a href="#close" id="close">&times; Close</a>'
+								+ '<img id="dialog-image" src="" alt="full size photo">'
+								+ '<div class="loading-image"></div></div>').fadeIn('normal');
 
 				// variable that stores that changes the size of the image
 				var largerImageSourceChange = $(this).attr('src').replace(/_m.jpg/, '.jpg');
 				// changes the src in the lightbox loading image 
-				$('#lightboxImage').attr('src', largerImageSourceChange);
+				$('#dialog-image').attr('src', largerImageSourceChange);
 				// the loading image is removed
 				$('.loading-image').remove();
 				// event handlers for the dialog

@@ -65,6 +65,12 @@ p{
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
 	font-size: 30px;
+	border: 2px solid #999;
+	-moz-box-shadow: inset 0 0 5px #888;
+	-webkit-box-shadow: inset 0 0 5px #888;
+	box-shadow: inner 0 0 5px #888;	
+	-msie-box-shadow: inset 0 0 5px #888;
+	-o-box-shadow: inset 0 0 5px #888;	
 }
 #submit-button{
     width: 80px;
@@ -73,7 +79,7 @@ p{
     cursor: pointer;
 	vertical-align: top;
     text-indent: -1000em;
-	background: url(/assets/images/search_icon.png) no-repeat;
+	background: url(../images/search_icon.png) no-repeat;
 	margin: 0 0 0 10px;
 }
 
@@ -220,24 +226,25 @@ img[rel=grid].loading{
     display: none;    
 }
 
-#lightBoxOverlay {
+#dialog-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: #000;
-    z-index:9999;
+    z-index: 9;
 	opacity: 0.8;
 }
-#whiteWindow {
+#dialog-container {
     position: absolute;
-    top: 40%;
+    top: 10px;
     left: 50%;
-    margin: -200px 0 0 -300px; 
-    z-index: 10000;
+    margin: 0 0 0 -300px; 
+    z-index: 10;
+	width: 300px;
 }
-#whiteWindow #close {
+#close {
     color: #fff;
     position: relative;
     right: 10px;
@@ -245,7 +252,7 @@ img[rel=grid].loading{
     font-size: 14px;
     z-index: 5;
 }
-#lightboxImage{
+#dialog-image{
 	display: block;
 	margin: 0 auto;
 	-moz-border-radius: 20px;
@@ -253,7 +260,7 @@ img[rel=grid].loading{
 }
 
 .loading-image{
-	background: url(/assets/images/loader.gif) no-repeat;
+	background: url(../images/loader.gif) no-repeat;
 	width: 66px;
 	height: 66px;	
 }
@@ -264,4 +271,7 @@ img[rel=grid].loading{
 }
 #content-box .loading-image{
 	margin: 15px 0 0 110px;
+}
+#dialog-container .loading-image{
+	background: url(../images/dialog_loader.gif) no-repeat;
 }
