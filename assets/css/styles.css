@@ -136,15 +136,6 @@ p{
 }
 
 
-#loadingImage{
-    background: url(/assets/images/loader.gif) no-repeat;
-    position: relative;
-    height: 66px;
-    width: 66px;
-    top: 240px;
-    left: 330px;
-    z-index: 300;
-}
 #errorMessage{
     position: absolute;
     top: 5px;
